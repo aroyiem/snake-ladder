@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files=true;
+option java_package = "com.roy.game";
+
+message Die {
+  int32 value = 1;
+}
+
+message Player {
+  string name = 1;
+  int32 position = 2;
+}
+
+message GameState {
+  repeated Player players = 1;
+}
+
+service GameService {
+
+  // roll dice
+  rpc roll(stream Die) returns (stream GameState);
+
+}
